@@ -84,4 +84,24 @@ public class UserController extends BaseController {
     public Object findPage( PageRequest pageQuery) {
         return userService.findPage(pageQuery);
     }
+    @GetMapping("get_by_uid")
+    public JsonResult<User> getByUid(HttpSession session) {
+        // 从HttpSession对象中获取uid
+        Integer uid = getUidFromSession(session);
+        // 调用业务对象执行获取数据
+        User data = userService.getByUid(uid);
+        // 响应成功和数据
+        return new JsonResult<User>(ok, data);
+    }
+
+    @RequestMapping("change_info")
+    public JsonResult<Void> changeInfo(User user, HttpSession session) {
+        // 从HttpSession对象中获取uid和username
+        Integer uid = getUidFromSession(session);
+        String username = getUsernameFromSession(session);
+        // 调用业务对象执行修改用户资料
+        userService.changeInfo(uid, username, user);
+        // 响应成功
+        return new JsonResult<Void>(ok);
+    }
 }

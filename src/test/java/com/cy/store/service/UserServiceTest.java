@@ -84,6 +84,6 @@ public class UserServiceTest {
         user.setPhone("12345678998");
         user.setEmail("@111111111qq.com");
         user.setGender(0);
-        userService.changeInfo(7,"yk5",user);
+        userService.changeInfo(9,"yk6",user);
     }
 }
