@@ -62,6 +62,16 @@
                 modified_time = #{modifiedTime}
             where uid = #{uid}
     </update>
+    <update id="updateAvatarByUid">
+         UPDATE
+            t_user
+        SET
+            avatar = #{avatar},
+            modified_user = #{modifiedUser},
+            modified_time = #{modifiedTime}
+        WHERE
+            uid = #{uid}
+    </update>
     <!--select语句在执行的时候，查询的是一个对象，多个对象-->
     <!--
         resultType: 表示查询的结果集类型， 只需要指定对应映射类的类型，并且包含完成包的接口
