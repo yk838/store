@@ -155,14 +155,18 @@ public class UserServiceImpl implements IUserService {
     /**
      * 调用分页插件完成分页
      * @param pageQuery
-     * @return
+     * @return pageInfo对象，分页对象，属性有nextPage		下一页
+     * prePage		前一页
+     * pageNum		当前页码
+     * pageSize		每页的数量
+     * pages		总页数
      */
     private PageInfo<User> getPageInfo(PageRequest pageRequest) {
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
         PageHelper.startPage(pageNum, pageSize);
         List<User> sysMenus = userMapper.selectPage();
-        return new PageInfo<User>(sysMenus);
+        return new PageInfo<User>(sysMenus); //PageInfo pageInfo = new PageInfo(userMapper.selectPage());
     }
 
     /**
